@@ -10,62 +10,15 @@ mvn spring-boot:run
 ```
 
 ## 비기능적 요구사항 (응집도를 높히고 결합도를 낮추어라)
-- PetstoreApplication.java 에 구현된 Pet, Cat, Dog 의 행위의 특성을 각각의 Cat 과 Dog 클래스 내에 한정되게 구현되고 관리되도록 리팩토링
-- Cat과 Dog 클래스에 대한 공통된 속성이나 행위는 Pet 에 공통화되도록 구현
+- PetstoreApplication.java 은 UI (System.out.println) 만 개발하고, 
+- Pet.java 는 애완동물의 특성만을 구현하도록 하라.
 
 ## PetstoreApplication 내에 있던 행위들을 Pet.java 의 인스턴스 행위로 이동
 - Pet.java
-```javascript
-package com.demo.petstore;
 
-public class Pet {
-    int appearance;
-    int energy;
-    String type;
-
-    public void speak(){
-		System.out.println("pet is eating");
-
-		if("Dog".equals(this.type))
-			System.out.println("멍멍");
-		else if("Cat".equals(this.type))
-			System.out.println("야옹");
-		else
-			System.out.println("소리낼줄 모릅니다");
-	}
-
-
-	public void eat(){
-		System.out.println("pet is eating");
-
-		if("Dog".equals(type)){
-			energy = energy + 2;
-			speak();	
-		}
-		else if("Cat".equals(type))
-			energy = energy + 1;
-	}
-
-	public void sleep(){
-		System.out.println("pet is sleeping");
-
-        Pet pet = this;
-		if("Dog".equals(pet.type)){
-			pet.energy = pet.energy + 1;
-		}else if("Cat".equals(pet.type)){
-			pet.appearance = pet.appearance + 1;
-			pet.energy = pet.energy + 1;
-		}
-
-	}
-
-
-}
-
-
-```
 
 - PetstoreApplication.java 에서는 Pet.java 를 순수히 호출하여 Pet.java 에 완전히 로직을 위임:
+
 https://github.com/msa-school/ddd-petstore-level2-polymorphism/blob/main/src/main/java/com/demo/petstore/PetstoreApplication.java
 
 - 평가: PetstoreApplication.java (UI 개발) 담당자와 Pet.java (애완동물 전문가)와의 도메인 지식의 분리는 이루어졌다. 하지만, Cat과 Dog 의 도메인 전문가들이 다르다면, 여전히 Pet.java 에 Cat과 Dog 전문가가 Pet.java 를 공통적으로 관리해야 한다.

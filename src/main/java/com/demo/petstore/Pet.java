@@ -5,20 +5,19 @@ public class Pet {
     int energy;
     String type;
 
-    public void speak(){
+    public String speak(){
 		System.out.println("pet is eating");
 
 		if("Dog".equals(this.type))
-			System.out.println("멍멍");
+			return "멍멍";
 		else if("Cat".equals(this.type))
-			System.out.println("야옹");
+			return("야옹");
 		else
-			System.out.println("소리낼줄 모릅니다");
+			return("소리낼줄 모릅니다");
 	}
 
 
 	public void eat(){
-		System.out.println("pet is eating");
 
 		if("Dog".equals(type)){
 			energy = energy + 2;
@@ -29,7 +28,6 @@ public class Pet {
 	}
 
 	public void sleep(){
-		System.out.println("pet is sleeping");
 
         Pet pet = this;
 		if("Dog".equals(pet.type)){

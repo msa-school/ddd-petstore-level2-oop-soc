@@ -13,13 +13,15 @@ public class PetstoreApplication {
 		dog.energy = 0;
 		dog.type = "Dog";
 
-		dog.speak();
+		System.out.println(dog.speak());
 
+		System.out.println("pet is eating");
 		dog.eat();
 
 		System.out.println("appearance=" + dog.appearance);
 		System.out.println("energy=" + dog.energy);
 
+		System.out.println("pet is sleeping");
 		dog.sleep();
 
 		System.out.println("appearance=" + dog.appearance);
