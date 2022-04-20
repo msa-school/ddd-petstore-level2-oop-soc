@@ -13,21 +13,39 @@ public class PetstoreApplication {
 		dog.energy = 0;
 		dog.type = "Dog";
 
-		System.out.println(dog.speak());
+		speak(dog);
 
-		System.out.println("pet is eating");
-		dog.eat();
+		eat(dog);
 
 		System.out.println("appearance=" + dog.appearance);
 		System.out.println("energy=" + dog.energy);
 
-		System.out.println("pet is sleeping");
-		dog.sleep();
+		sleep(dog);
 
 		System.out.println("appearance=" + dog.appearance);
 		System.out.println("energy=" + dog.energy);
 
 		//SpringApplication.run(PetstoreApplication.class, args);
+	}
+
+	public static void speak(Pet pet){
+		System.out.println("pet is speaking");
+
+		pet.speak();
+	}
+
+
+	public static void eat(Pet pet){
+		System.out.println("pet is eating");
+
+		pet.eat();
+	}
+
+	public static void sleep(Pet pet){
+		System.out.println("pet is sleeping");
+
+		pet.sleep();
+
 	}
 
 }
