@@ -8,44 +8,31 @@ public class PetstoreApplication {
 
 	public static void main(String[] args) {
 
-		Pet dog = new Pet();
-		dog.appearance = 0;
-		dog.energy = 0;
-		dog.type = "Dog";
+		String type = "Cat";
 
-		speak(dog);
+		Pet pet = null;
+		if("Dog".equals(type)){
+			pet = new Dog();
+		
+		}else if("Cat".equals(type)){
+			pet = new Cat();
+		
+		}
 
-		eat(dog);
-
-		System.out.println("appearance=" + dog.appearance);
-		System.out.println("energy=" + dog.energy);
-
-		sleep(dog);
-
-		System.out.println("appearance=" + dog.appearance);
-		System.out.println("energy=" + dog.energy);
-
-		//SpringApplication.run(PetstoreApplication.class, args);
-	}
-
-	public static void speak(Pet pet){
-		System.out.println("pet is speaking");
+		pet.appearance = 0;
+		pet.energy = 0;
 
 		pet.speak();
-	}
 
-
-	public static void eat(Pet pet){
-		System.out.println("pet is eating");
-
-		pet.eat();
-	}
-
-	public static void sleep(Pet pet){
-		System.out.println("pet is sleeping");
+		System.out.println("appearance=" + pet.appearance);
+		System.out.println("energy=" + pet.energy);
 
 		pet.sleep();
 
+		System.out.println("appearance=" + pet.appearance);
+		System.out.println("energy=" + pet.energy);
+
 	}
+
 
 }
